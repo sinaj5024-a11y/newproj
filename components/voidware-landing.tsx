@@ -225,7 +225,7 @@ export function Footer() {
             <p className="footer-tagline">Лёгкий клиент. Чистый интерфейс. Свобода настроек.</p>
             <div className="footer-social">
               <a href="https://t.me/VoidWareDlc" target="_blank" rel="noreferrer">Telegram <ArrowUpRight aria-hidden="true" /></a>
-              <a href="https://discord.com/" target="_blank" rel="noreferrer">Discord <ArrowUpRight aria-hidden="true" /></a>
+              <a href="mailto:voidware@vk.com">Почта поддержки <ArrowUpRight aria-hidden="true" /></a>
             </div>
           </div>
           <div className="footer-link-column">
