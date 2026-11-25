@@ -777,23 +777,117 @@ body.antialiased {
 .vw-auth-error { margin:0; border:1px solid rgba(255,100,120,.25); border-radius:10px; background:rgba(255,70,90,.08); color:#ff9da9; padding:10px 12px; font-size:12px; }
 .vw-spin { animation:vw-spin 1s linear infinite; }
 @keyframes vw-spin { to { transform:rotate(360deg); } }
-.vw-account-wrap { width:min(100% - 40px,760px); margin:0 auto; padding:105px 0 90px; position:relative; z-index:1; }
-.vw-account-heading { margin-bottom:28px; }
-.vw-account-heading h1 { font-size:clamp(38px,7vw,66px); letter-spacing:-.06em; margin:18px 0 10px; }
-.vw-account-heading h1 span { color:#a18aff; }
-.vw-account-heading p { color:rgba(230,232,242,.58); }
-.vw-account-card { border:1px solid rgba(255,255,255,.1); border-radius:24px; background:rgba(15,16,24,.78); backdrop-filter:blur(22px); padding:clamp(20px,5vw,36px); box-shadow:0 25px 90px rgba(0,0,0,.25); }
-.vw-account-top { display:flex; align-items:center; justify-content:space-between; gap:16px; }
-.vw-account-top h2 { font-size:28px; margin:8px 0 0; }
-.vw-account-badge { display:flex; align-items:center; gap:7px; border:1px solid rgba(163,139,255,.28); border-radius:100px; background:rgba(142,116,255,.1); padding:8px 12px; color:#c7baff; font-size:11px; font-weight:700; }
-.vw-account-badge svg { width:15px; height:15px; }
-.vw-account-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:30px 0; }
-.vw-account-stats > div { display:grid; gap:9px; border:1px solid rgba(255,255,255,.07); border-radius:14px; padding:16px; background:rgba(255,255,255,.025); }
-.vw-account-stats span { color:rgba(230,232,242,.5); font-size:11px; }
-.vw-account-stats strong { font-size:14px; overflow-wrap:anywhere; }
-.vw-alpha { color:#c0a7ff; }
-.vw-download { display:flex; align-items:center; justify-content:center; gap:9px; text-decoration:none; }
-.vw-logout { display:flex; align-items:center; gap:8px; margin:22px auto 0; border:0; background:transparent; color:rgba(235,237,245,.55); cursor:pointer; font:inherit; font-size:12px; }
-.vw-logout:hover { color:#fff; }
-.vw-account-loading { text-align:center; color:rgba(235,237,245,.65); padding:80px 0; }
-@media(max-width:600px) { .vw-account-stats { grid-template-columns:1fr; } .vw-account-top { align-items:flex-start; flex-direction:column; } }
+/* ===== VoidWare account page — светлое «небо + стекло», как вся остальная страница ===== */
+.vw-account-wrap { position:relative; z-index:1; width:min(100% - 40px,640px); margin:0 auto; padding:88px 0 104px; }
+
+/* Заголовок */
+.vw-account-heading { margin-bottom:30px; animation:rise-in .7s .04s both; }
+.vw-account-heading h1 { margin:20px 0 12px; color:#173b59; font-size:clamp(44px,7vw,68px); font-weight:800; letter-spacing:-.075em; line-height:1.02; }
+.vw-account-heading h1 span { color:#4c9bd3; }
+.voidware-page .vw-account-heading p { max-width:420px; margin:0; color:#304b60; font-family:'Cormorant Garamond',Georgia,serif; font-size:18px; font-weight:600; line-height:1.55; }
+
+/* Карточка аккаунта */
+.vw-account-card {
+  position:relative; isolation:isolate; overflow:hidden;
+  padding:clamp(22px,4.5vw,36px);
+  border:1px solid rgba(255,255,255,.94); border-radius:28px;
+  background:rgba(255,255,255,.78);
+  box-shadow:0 28px 74px rgba(48,101,142,.15), inset 0 1px 0 #fff;
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  animation:rise-in .7s .14s both;
+}
+.vw-account-card::before {
+  content:''; position:absolute; z-index:-1; top:-120px; right:-100px; width:320px; height:320px; border-radius:50%;
+  background:radial-gradient(circle, rgba(140,208,245,.5), rgba(140,208,245,0) 68%); pointer-events:none;
+}
+
+/* Логин и значок */
+.vw-account-top { display:flex; flex-wrap:wrap; align-items:center; gap:16px; padding-bottom:24px; border-bottom:1px solid #e5eef4; }
+.vw-account-top::before {
+  content:''; flex:none; width:56px; height:56px; border:1px solid #d5eaf6; border-radius:18px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233988c2' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E") center/24px 24px no-repeat,
+    linear-gradient(145deg,#f7fcff,#e0f3fd);
+  box-shadow:0 8px 20px rgba(61,112,146,.1), inset 0 1px 0 #fff;
+}
+.vw-account-top > div { flex:1 1 160px; min-width:0; }
+.vw-account-top h2 { margin:6px 0 0; color:#1b3d5a; font-size:clamp(24px,5vw,30px); font-weight:800; letter-spacing:-.055em; line-height:1.1; overflow-wrap:anywhere; }
+.vw-account-badge {
+  display:inline-flex; flex:none; align-items:center; gap:7px; margin-left:auto; padding:9px 14px;
+  border:1px solid #d5eaf6; border-radius:999px; background:rgba(255,255,255,.82);
+  color:#2f6f9c; font-size:12px; font-weight:800; letter-spacing:.02em; line-height:1;
+  box-shadow:0 6px 16px rgba(61,112,146,.08);
+}
+.vw-account-badge svg { width:15px; height:15px; color:#3988c2; }
+
+/* Подписка / срок / префикс */
+.vw-account-stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:24px 0 26px; }
+.vw-account-stats > div {
+  display:grid; align-content:space-between; gap:10px; padding:16px 18px;
+  border:1px solid #e3eff6; border-radius:18px; background:rgba(255,255,255,.7);
+}
+.vw-account-stats span { color:#4d6a7f; font-family:'Cormorant Garamond',Georgia,serif; font-size:15px; font-weight:700; letter-spacing:.02em; line-height:1.2; }
+.vw-account-stats strong { color:#1b3d5a; font-size:15px; font-weight:800; letter-spacing:-.02em; overflow-wrap:anywhere; }
+
+/* Главная плитка — подписка, с «орбитами» в углу */
+.vw-account-stats > div:first-child {
+  grid-column:1 / -1; min-height:124px; padding:20px 22px; border-color:#cfe6f4;
+  background:
+    radial-gradient(circle at 100% 0, transparent 0 54px, rgba(76,155,211,.17) 54px 55px, transparent 55px 92px, rgba(76,155,211,.12) 92px 93px, transparent 93px 134px, rgba(76,155,211,.08) 134px 135px, transparent 135px),
+    linear-gradient(135deg, rgba(255,255,255,.92), rgba(207,238,255,.82));
+}
+.vw-account-stats > div:first-child strong { font-size:clamp(30px,6vw,40px); font-weight:800; letter-spacing:-.06em; line-height:1; }
+.vw-alpha { background:linear-gradient(100deg,#1f6fb0 0%,#4cb0e8 55%,#2a86c6 100%); -webkit-background-clip:text; background-clip:text; color:transparent !important; -webkit-text-fill-color:transparent; }
+
+/* Кнопка «Скачать лаунчер» */
+.voidware-page .vw-account-card .vw-download {
+  position:relative; isolation:isolate; overflow:hidden;
+  display:flex; align-items:center; justify-content:center; gap:12px;
+  min-height:58px; margin-top:0; border-radius:999px; text-decoration:none;
+  background:linear-gradient(180deg,#2b6391 0%,#1b4263 100%);
+  box-shadow:0 16px 30px rgba(24,65,98,.26), inset 0 1px 0 rgba(255,255,255,.22);
+  font-size:13px; font-weight:800; letter-spacing:.01em;
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.voidware-page .vw-account-card .vw-download svg { width:30px; height:30px; padding:7px; border-radius:50%; background:rgba(255,255,255,.15); }
+.voidware-page .vw-account-card .vw-download::after {
+  content:''; position:absolute; inset:0; z-index:-1; transform:translateX(-120%);
+  background:linear-gradient(100deg, transparent 30%, rgba(255,255,255,.22) 50%, transparent 70%);
+  transition:transform .7s ease;
+}
+.voidware-page .vw-account-card .vw-download:hover { transform:translateY(-2px); background:linear-gradient(180deg,#336d9d 0%,#1f4c72 100%); box-shadow:0 20px 36px rgba(24,65,98,.3), inset 0 1px 0 rgba(255,255,255,.26); }
+.voidware-page .vw-account-card .vw-download:hover::after { transform:translateX(120%); }
+.voidware-page .vw-account-card .vw-download:active { transform:translateY(0); }
+.voidware-page .vw-account-card .login-privacy-note { margin:14px 0 0; color:#4d6a7f; font-size:14px; }
+
+/* Кнопка «Выйти из аккаунта» */
+.vw-logout {
+  display:flex; width:100%; min-height:50px; align-items:center; justify-content:center; gap:8px; margin:12px 0 0;
+  border:1px solid #d3e5f0; border-radius:999px; background:rgba(255,255,255,.62);
+  color:#4d6a7f; cursor:pointer; font:inherit; font-size:12px; font-weight:800;
+  transition:color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.vw-logout svg { width:15px; height:15px; }
+.vw-logout:hover { border-color:#b9d6e8; background:#fff; color:#1b4263; }
+.vw-logout:active { transform:scale(.99); }
+.vw-download:focus-visible, .vw-logout:focus-visible { outline:3px solid rgba(76,155,211,.45); outline-offset:3px; }
+
+/* Загрузка */
+.vw-account-loading { padding:96px 0; text-align:center; color:#304b60; font-family:'Cormorant Garamond',Georgia,serif; font-size:19px; font-weight:700; }
+.vw-account-loading::before {
+  content:''; display:block; width:24px; height:24px; margin:0 auto 16px;
+  border:2px solid #cfe4f1; border-top-color:#3988c2; border-radius:50%; animation:vw-spin .9s linear infinite;
+}
+
+@media (max-width:480px) {
+  .vw-account-wrap { padding:56px 0 72px; }
+  .vw-account-card { border-radius:24px; }
+  .vw-account-stats { grid-template-columns:1fr; }
+  .vw-account-stats > div:first-child { grid-column:auto; }
+  .vw-account-badge { margin-left:0; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .vw-account-heading, .vw-account-card { animation:none; }
+  .vw-account-loading::before { animation-duration:2.4s; }
+  .voidware-page .vw-account-card .vw-download::after { transition:none; }
+}
