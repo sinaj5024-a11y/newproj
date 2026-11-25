@@ -765,9 +765,10 @@ body.antialiased {
 
 /* VoidWare account / authentication */
 .vw-auth-form { display:grid; gap:14px; margin-top:22px; }
-.vw-auth-form > label { display:grid; gap:8px; color:rgba(235,237,245,.78); font-size:12px; letter-spacing:.04em; }
-.vw-auth-form input:not([type="checkbox"]) { width:100%; min-width:0; border:1px solid rgba(255,255,255,.11); border-radius:12px; background:rgba(255,255,255,.045); color:#f5f6fb; padding:13px 14px; outline:none; transition:border-color .2s,background .2s,box-shadow .2s; }
-.vw-auth-form input:focus { border-color:rgba(178,156,255,.7); background:rgba(255,255,255,.07); box-shadow:0 0 0 3px rgba(148,118,255,.12); }
+.vw-auth-form > label { display:grid; gap:8px; color:#5c7588; font-size:12px; letter-spacing:.04em; }
+.vw-auth-form input:not([type="checkbox"]) { width:100%; min-width:0; border:1px solid #dce6ed; border-radius:12px; background:#f4f7fa; color:#304b60; caret-color:#527fa1; padding:13px 14px; outline:none; transition:border-color .2s,background .2s,box-shadow .2s; }
+.vw-auth-form input:not([type="checkbox"])::placeholder { color:#91a4b2; opacity:1; }
+.vw-auth-form input:focus { border-color:#9bbbd2; background:#fff; box-shadow:0 0 0 3px rgba(82,127,161,.13); }
 .vw-auth-form .vw-key-input { font-family:ui-monospace,monospace; letter-spacing:.035em; }
 .vw-remember { display:flex!important; align-items:center; gap:9px!important; font-size:12px!important; }
 .vw-remember input { accent-color:#a18aff; }
