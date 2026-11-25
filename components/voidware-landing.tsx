@@ -68,7 +68,7 @@ export function Header() {
     <header className="site-header">
       <nav className="nav-island" aria-label="Основная навигация">
         <a className="brand" href="/" aria-label="VoidWare — на главную">
-          <VoidWareMark />
+          <img className="brand-logo" src="/logo.png" alt="" />
           <span>VOID<span className="brand-light">WARE</span></span>
         </a>
         <div className="nav-links">
@@ -221,7 +221,7 @@ export function Footer() {
       <div className="footer-inner">
         <div className="footer-columns">
           <div className="footer-about">
-            <a className="footer-brand brand" href="/" aria-label="VoidWare — на главную"><VoidWareMark /><span>VOID<span className="brand-light">WARE</span></span></a>
+            <a className="footer-brand brand" href="/" aria-label="VoidWare — на главную"><img className="brand-logo" src="/logo.png" alt="" /><span>VOID<span className="brand-light">WARE</span></span></a>
             <p className="footer-tagline">Лёгкий клиент. Чистый интерфейс. Свобода настроек.</p>
             <div className="footer-social">
               <a href="https://t.me/VoidWareDlc" target="_blank" rel="noreferrer">Telegram <ArrowUpRight aria-hidden="true" /></a>
