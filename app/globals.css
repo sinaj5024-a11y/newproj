@@ -254,6 +254,7 @@ body.antialiased {
   white-space: nowrap;
 }
 .brand-light { color: #78a3c6; font-weight: 700; }
+.brand-logo { display: block; width: 32px; height: 32px; flex: 0 0 32px; object-fit: contain; border-radius: 7px; }
 .brand-mark { display: grid; width: 25px; height: 25px; grid-template: repeat(2, 1fr) / repeat(2, 1fr); gap: 3px; transform: rotate(-7deg); }
 .brand-mark span { border-radius: 3px; background: #3e8ed4; }
 .brand-mark span:nth-child(2) { opacity: .7; }
@@ -440,6 +441,7 @@ body.antialiased {
   .nav-island { min-height: 54px; gap: 8px; padding: 6px 7px 6px 14px; }
   .brand { gap: 7px; font-size: 12px; }
   .brand-mark { width: 21px; height: 21px; }
+  .brand-logo { width: 27px; height: 27px; flex-basis: 27px; }
   .nav-links { display: none; }
   .nav-cta { gap: 5px; padding: 10px 12px; font-size: 9px; }
   .nav-cta svg { width: 12px; height: 12px; }
@@ -631,6 +633,7 @@ body.antialiased {
   .nav-cta { gap: 3px; padding-inline: 7px; font-size: 7px; }
   .brand { gap: 5px; font-size: 10px; }
   .brand-mark { width: 19px; height: 19px; }
+  .brand-logo { width: 24px; height: 24px; flex-basis: 24px; }
   .info-card-grid, .pricing-grid, .media-grid { grid-template-columns: 1fr; }
   .pricing-card { min-height: 300px; }
   .media-preview { min-height: 220px; }
